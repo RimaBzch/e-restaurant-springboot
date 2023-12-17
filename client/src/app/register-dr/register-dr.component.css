@@ -1,0 +1,7 @@
+.background{
+    background-image: url("../../assets/images/Login1.jpg"
+    );
+    background-color: black;
+    background-repeat: repeat-y;
+    background-position: center;
+}

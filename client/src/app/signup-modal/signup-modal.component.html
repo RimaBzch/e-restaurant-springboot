@@ -1,0 +1,72 @@
+<div id="modal-content-wrapper">
+    <header id="modal-header">
+        <h1 id="modal-title">You have to signup first :)</h1>
+    </header>
+    <section >
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+            <p class="text-white-50 mb-5">Please enter your Information required</p>
+           
+
+            <div class="form-outline form-white mb-4">
+              <input type="email"
+               id="typeEmailX"
+               formControlName="email"
+               class="form-control form-control-lg"
+               [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+              </div>   
+            
+              <label class="form-label" for="typeEmailX">Email</label>
+            </div>
+
+            <div class="form-outline form-white mb-4">
+              <input type="password"
+               id="typePasswordX"
+               formControlName="password"
+               [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                class="form-control form-control-lg" />
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                    <div *ngIf="f['password'].errors['required']">Password is required</div>
+                    <div *ngIf="f['password'].errors['minlength']">
+                      Password must be at least 6 characters
+                    </div>
+                    <div *ngIf="f['password'].errors['maxlength']">
+                      Username must not exceed 40 characters
+                    </div>
+                  </div>
+              <label class="form-label" for="typePasswordX">Password</label>
+            </div>
+
+            <div class="form-outline form-white mb-4">
+                <input type="password"
+                 id="typePasswordConf"
+                 formControlName="confirmPassword"
+               [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+                  class="form-control form-control-lg" />
+                  <div
+                  *ngIf="submitted && f['confirmPassword'].errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f['confirmPassword'].errors['required']">
+                    Confirm Password is required
+                  </div>
+                  <div *ngIf="f['confirmPassword'].errors['matching']">
+                    Confirm Password does not match
+                  </div>
+                </div>    
+              <label class="form-label" for="typePasswordConf">Confirm your Password</label>
+              </div>
+              <ng-snotify class="material"></ng-snotify>
+             <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>-->
+
+            <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign up</button>
+        </form>
+    </section>
+    <ng-snotify class="material"></ng-snotify>
+    <footer id="modal-footer">
+        <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">Go back</button>
+    </footer>
+</div>

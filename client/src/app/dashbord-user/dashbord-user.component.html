@@ -1,0 +1,74 @@
+<!-- Page Content -->
+<div class="container" >
+
+  <!-- Page Heading -->
+  <h1 style="text-align: center;color:gray"> 
+   <!--<small></small>--> 
+{{messageNoInternet}}
+  </h1>
+
+  <div class="row" >
+    <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let product of products| paginate: { itemsPerPage: 6, currentPage: size }">
+      <div class="card h-100">
+        <a href="#">
+          <img class="card-img-top"  src="data:image/jpeg;base64,{{product.picture.picByte}}" id="photo-id"/>  
+        </a>
+          <div class="card-body">
+              <h1 class="card-title" style="color: black;text-align: center;">
+              <strong> {{product.name}} </strong>            
+              </h1>
+              <a  style="color: black;"><b>Categorie : </b>  {{product.categorie}}</a>
+              <p  style="color: black;"><b>Composition : </b>  {{product.composition}}</p>
+              <h3 style="color: rgb(14, 47, 194);"><b>price : </b> {{product.prix}}€ </h3>
+              <a  style="color: black;"> Number of order :</a>
+              <select id="floatingInputComposition" class="form-control"  style="width: 2cm;" [formControl]="categorieFormControl">
+                <option  [ngValue]="1">1</option>
+                <option  [ngValue]="2">2</option>
+                <option  [ngValue]="3">3</option>
+                <option  [ngValue]="4">4</option>
+                <option  [ngValue]="5">5</option>
+                <option  [ngValue]="6">6</option>
+                <option  [ngValue]="7">7</option>
+                <option  [ngValue]="8">8</option>
+                <option  [ngValue]="9">9</option>
+                <option  [ngValue]="10">10</option>
+                
+              </select>
+            
+               <br>
+              <div class="d-grid mb-2">
+                  <button class="btn btn-lg text-uppercase"  style="background-color: rgb(37, 143, 175);bottom: 0;" (click)="addToCard(product.name,product.prix)" >Add To Card</button>
+              </div>
+          </div>
+      </div>
+    </div>      
+  </div>
+  <!-- /.row -->
+ <!-- <ng-snotify class="material"></ng-snotify>-->
+  <!-- Pagination -->
+  <ul class="pagination justify-content-center">
+   <!-- <li class="page-item">
+      <a class="page-link" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>-->
+  <!--  <li class="page-item" *ngFor="let i of array">
+      <a class="page-link" >{{i}}</a>
+    </li>-->
+
+
+  
+ <pagination-controls (pageChange)="size = $event"></pagination-controls>
+   
+   <!-- <li class="page-item">
+      <a class="page-link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>-->
+    
+  </ul>
+
+</div>
+<!-- /.container -->

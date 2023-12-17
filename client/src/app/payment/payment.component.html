@@ -1,0 +1,50 @@
+
+<div id="modal-content-wrapper">
+   
+    <section  id="modal-body" >
+        <mat-card>
+            <mat-card-title>Details required</mat-card-title>
+            <mat-card-content> 
+                <form>
+                    <div class="form-outline form-white mb-4">
+                                          
+                            <input matInput class="form-control form-control-lg"  type="text" placeholder="Credit Card #" name="cardNumber">
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                                          
+                            <input matInput class="form-control form-control-lg"   type="text" placeholder="Expiration Month" name="expMonth">
+                        
+                    </div>
+                  
+                    <div class="form-outline form-white mb-4">
+                                              
+                            <input type="text" class="form-control form-control-lg"  placeholder="Expiration Year" name="expYear">
+                       
+                    </div>
+                    
+                    <div class="form-outline form-white mb-4">
+                                              
+                            <input matInput class="form-control form-control-lg"  type="text" placeholder="CVC" name="cvc">
+                       
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                                         
+                        <button matInput mat-button (click)="chargeCreditCard()">Submit</button>
+                   
+                    </div>
+                   
+                  </form>
+                  <ng-snotify class="material"></ng-snotify>
+            </mat-card-content>
+            <footer id="modal-footer"> 
+               <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">Go back</button>     
+            </footer>
+        </mat-card>
+    </section>
+
+    
+      
+     
+</div>

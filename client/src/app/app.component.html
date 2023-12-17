@@ -1,0 +1,582 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!------------------ ADMIN ROLE   ------------------------>
+<div *ngIf="connected && roleToCheck == '[ADMIN]'; else checkRole">
+<mat-toolbar class="mat-elevation-z8" >
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+    Resto Icon
+   
+</mat-toolbar>
+
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+        <img class="avatar mat-elevation-z8" src="../../assets/images/Login1.jpg" />
+        
+        <h4 class="name">Admin Name</h4>
+        <p class="designation">:)</p>
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" (click)="goToHome()">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+      
+        <button mat-button class="menu-button">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>info</mat-icon>
+            <span>About</span>
+        </button>
+
+        <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#users" aria-controls="users" aria-expanded="false" >
+            <mat-icon>persons</mat-icon>
+            <span>Users</span>
+        </button>
+        <div class="dropdown-toggle collapse" id="users">
+            <ul>
+            <button mat-button class="menu-button" (click)="addUser()">
+                <mat-icon>add</mat-icon>
+                <span>Add</span>
+            </button>
+            <button mat-button class="menu-button" (click)="updateUser()">
+                <mat-icon>update</mat-icon>
+                <span>Update</span>
+            </button>
+            <button mat-button class="menu-button" (click)="deleteUser()">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+            </button>
+            </ul>
+        </div>
+
+      
+            <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#tables" aria-controls="tables" aria-expanded="false" >
+                <mat-icon>tab</mat-icon>
+                <span>Tables</span>
+            </button>
+       
+        <div class="dropdown-toggle collapse" id="tables">
+           
+            <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#categorie" aria-controls="categorie" aria-expanded="false" >
+                <mat-icon>categorie</mat-icon>
+                <span>Categorie</span>
+            </button>
+            <div class="dropdown-toggle collapse" id="categorie">
+                <ul>
+                <button mat-button class="menu-button" (click)="addCategorie()">
+                    <mat-icon>add</mat-icon>
+                    <span>Add</span>
+                </button>
+                <button mat-button class="menu-button" (click)="updateCategorie()">
+                    <mat-icon>update</mat-icon>
+                    <span>Update</span>
+                </button>
+                <button mat-button class="menu-button" (click)="deleteCategorie()">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete</span>
+                </button>
+                </ul>
+            </div>
+
+           
+            
+            <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#product" aria-controls="product" aria-expanded="false" >
+                <mat-icon>product</mat-icon>
+                <span>Product</span>
+            </button>
+
+            <div class="dropdown-toggle collapse" id="product">
+                <ul>
+                <button mat-button class="menu-button" (click)="addProduct()">
+                    <mat-icon>add</mat-icon>
+                    <span>Add</span>
+                </button>
+                <button mat-button class="menu-button" (click)="updateProduct()">
+                    <mat-icon>update</mat-icon>
+                    <span>Update</span>
+                </button>
+                <button mat-button class="menu-button" (click)="deleteProduct()">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete</span>
+                </button>
+            </ul>
+            </div>
+           
+             
+        </div>
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" (click)="goToAnalytics()">
+            <mat-icon>analytics</mat-icon>
+            <span>Analytics</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+         
+        <router-outlet></router-outlet>
+      
+    </mat-sidenav-content>
+</mat-sidenav-container>
+</div>
+<!------------------ ROLE USER   ------------------------>
+<ng-template #checkRole >
+    <div  *ngIf="connected && roleToCheck == '[USER]'; else delivery">
+        <mat-toolbar class="mat-elevation-z8" >
+            <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+                <mat-icon *ngIf="!sidenav.opened">
+                    menu
+                </mat-icon>
+                <mat-icon *ngIf="sidenav.opened">
+                    close
+                </mat-icon>
+            </button>
+            Resto Icon
+            <mat-icon style = "position: fixed;right: 1.5cm;" matBadge="{{numOrder}}" (click)="openCard()">add_shopping_cart</mat-icon>
+           
+            <mat-icon style = "position: fixed;right: 0.4cm;" matBadge="">notifications</mat-icon>
+           
+        </mat-toolbar>
+        
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        
+                <img class="avatar mat-elevation-z8" src="../../assets/images/Login1.jpg" />
+        
+                <h4 class="name">User Name</h4>
+                <p class="designation">:)</p>
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button" (click)="goToHomeUser()">
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+                
+                <button *ngFor="let categorie of categories" [routerLink]="['/productsByCategorie', categorie.id]" mat-button class="menu-button">
+                    <mat-icon>food</mat-icon>
+                    <span>{{categorie.name}}</span>
+                </button>
+                <mat-divider></mat-divider>
+                <button mat-button class="menu-button" (click)="getUserOrder()">
+                    <mat-icon>send</mat-icon>
+                    <span>My orders History</span>
+                </button>
+                <button mat-button class="menu-button" (click)="getCurrentOrderByUserId()">
+                    <mat-icon>send</mat-icon>
+                    <span>My current orders</span>
+                </button>
+                
+                <mat-divider></mat-divider>
+                <button mat-button class="menu-button">
+                    <mat-icon>person</mat-icon>
+                    <span>Profile</span>
+                </button>
+                <mat-divider></mat-divider>
+                <button mat-button class="menu-button">
+                    <mat-icon>info</mat-icon>
+                    <span>About</span>
+                </button>
+                
+                <mat-divider></mat-divider>
+                <button mat-button class="menu-button" (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+
+                
+        
+              
+           <!--         <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#tables" aria-controls="tables" aria-expanded="false" >
+                        <mat-icon>tab</mat-icon>
+                        <span>Tables</span>
+                    </button>
+               
+                <div class="dropdown-toggle collapse" id="tables">
+                   
+                    <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#categorie" aria-controls="categorie" aria-expanded="false" >
+                        <mat-icon>categorie</mat-icon>
+                        <span>Categorie</span>
+                    </button>
+                    <div class="dropdown-toggle collapse" id="categorie">
+                        <ul>
+                        <button mat-button class="menu-button" (click)="addCategorie()">
+                            <mat-icon>add</mat-icon>
+                            <span>Add</span>
+                        </button>
+                        <button mat-button class="menu-button" (click)="updateCategorie()">
+                            <mat-icon>update</mat-icon>
+                            <span>Update</span>
+                        </button>
+                        <button mat-button class="menu-button" (click)="deleteCategorie()">
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                    </ul>
+                    </div>
+                    
+                    <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#product" aria-controls="product" aria-expanded="false" >
+                        <mat-icon>product</mat-icon>
+                        <span>Product</span>
+                    </button>
+        
+                    <div class="dropdown-toggle collapse" id="product">
+                        <ul>
+                        <button mat-button class="menu-button" (click)="addProduct()">
+                            <mat-icon>add</mat-icon>
+                            <span>Add</span>
+                        </button>
+                        <button mat-button class="menu-button" (click)="updateProduct()">
+                            <mat-icon>update</mat-icon>
+                            <span>Update</span>
+                        </button>
+                        <button mat-button class="menu-button" (click)="deleteProduct()">
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                    </ul>
+                    </div>
+                   
+                     
+                </div>-->
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button">
+                    <mat-icon>help</mat-icon>
+                    <span>Help</span>
+                </button>
+        
+            </mat-sidenav>
+            <mat-sidenav-content >
+              
+                <router-outlet></router-outlet>
+               
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+        </div>
+        
+</ng-template>
+<!------------------    ------------------------>
+<ng-template #delivery>
+    <div *ngIf="connected && roleToCheck == '[DELIVERY]'; else reception">
+        <mat-toolbar class="mat-elevation-z8" >
+            <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+                <mat-icon *ngIf="!sidenav.opened">
+                    menu
+                </mat-icon>
+                <mat-icon *ngIf="sidenav.opened">
+                    close
+                </mat-icon>
+            </button>
+            Resto Icon
+           
+        </mat-toolbar>
+        
+        
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        
+                <img class="avatar mat-elevation-z8" src="../../assets/images/Login1.jpg" />
+        
+                <h4 class="name">Delivery Name</h4>
+                <p class="designation">:)</p>
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button" (click)="goToHomeDel()">
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+              
+                <button mat-button class="menu-button">
+                    <mat-icon>person</mat-icon>
+                    <span>Profile</span>
+                </button>
+                <button mat-button class="menu-button">
+                    <mat-icon>info</mat-icon>
+                    <span>About</span>
+                </button>
+        
+              
+                    <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#tables" aria-controls="tables" aria-expanded="false" >
+                        <mat-icon>tab</mat-icon>
+                        <span>Delivery</span>
+                    </button>
+               
+                <div class="dropdown-toggle collapse" id="tables">
+                
+                        <button mat-button class="menu-button" (click)="getOrderAssignedToMe()">
+                            <mat-icon>loop</mat-icon>
+                            <span>Assigned to me</span>
+                        </button>
+                        
+                        <button mat-button class="menu-button" (click)="getOrderAssignedDeliveredByMe()">
+                            <mat-icon>loop</mat-icon>
+                            <span>Delivered by me</span>
+                        </button>
+
+                       
+                   
+                    
+                <!--    <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#product" aria-controls="product" aria-expanded="false" >
+                        <mat-icon>product</mat-icon>
+                        <span>Product</span>
+                    </button>
+        
+                    <div class="dropdown-toggle collapse" id="product">
+                        <ul>
+                        <button mat-button class="menu-button" (click)="addProduct()">
+                            <mat-icon>add</mat-icon>
+                            <span>Add</span>
+                        </button>
+                        <button mat-button class="menu-button" (click)="updateProduct()">
+                            <mat-icon>update</mat-icon>
+                            <span>Update</span>
+                        </button>
+                        <button mat-button class="menu-button" (click)="deleteProduct()">
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                    </ul>
+                    </div> --> 
+                   
+                     
+                </div>
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button">
+                    <mat-icon>help</mat-icon>
+                    <span>Help</span>
+                </button>
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button" (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+        
+            </mat-sidenav>
+            <mat-sidenav-content>
+              
+                <router-outlet></router-outlet>
+                
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+        </div>
+
+</ng-template>
+
+<!--------------------------------->
+<ng-template #reception>
+    <div *ngIf="connected && roleToCheck == '[RECEPTION]'; else login">
+        <mat-toolbar class="mat-elevation-z8" >
+            <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+                <mat-icon *ngIf="!sidenav.opened">
+                    menu
+                </mat-icon>
+                <mat-icon *ngIf="sidenav.opened">
+                    close
+                </mat-icon>
+            </button>
+            Resto Icon
+           
+        </mat-toolbar>
+        
+        
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        
+                <img class="avatar mat-elevation-z8" src="../../assets/images/Login1.jpg" />
+        
+                <h4 class="name">Reception Name</h4>
+                <p class="designation">:)</p>
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button" (click)="goToHome()">
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+              
+                <button mat-button class="menu-button">
+                    <mat-icon>person</mat-icon>
+                    <span>Profile</span>
+                </button>
+                <button mat-button class="menu-button">
+                    <mat-icon>info</mat-icon>
+                    <span>About</span>
+                </button>
+        
+              
+                    <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#tables" aria-controls="tables" aria-expanded="false" >
+                        <mat-icon>tab</mat-icon>
+                        <span>Tables</span>
+                    </button>
+               
+                
+                        <button mat-button class="menu-button" (click)="addCategorie()">
+                            <mat-icon>done</mat-icon>
+                            <span>My orders Delivered</span>
+                        </button>
+
+                        <button mat-button class="menu-button" (click)="addCategorie()">
+                            <mat-icon>loop</mat-icon>
+                            <span>My orders In progress</span>
+                        </button>
+                     
+                   
+                    
+                <!--    <button mat-button class="menu-button"  data-bs-toggle="collapse" data-bs-target="#product" aria-controls="product" aria-expanded="false" >
+                        <mat-icon>product</mat-icon>
+                        <span>Product</span>
+                    </button>
+        
+                    <div class="dropdown-toggle collapse" id="product">
+                        <ul>
+                        <button mat-button class="menu-button" (click)="addProduct()">
+                            <mat-icon>add</mat-icon>
+                            <span>Add</span>
+                        </button>
+                        <button mat-button class="menu-button" (click)="updateProduct()">
+                            <mat-icon>update</mat-icon>
+                            <span>Update</span>
+                        </button>
+                        <button mat-button class="menu-button" (click)="deleteProduct()">
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                    </ul>
+                    </div> --> 
+                   
+                     
+               
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button">
+                    <mat-icon>help</mat-icon>
+                    <span>Help</span>
+                </button>
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button" (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+        
+            </mat-sidenav>
+            <mat-sidenav-content>
+              
+                <router-outlet></router-outlet>
+             
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+        </div>
+
+</ng-template>
+<!-------------->
+<ng-template #login>
+    <div>
+        <mat-toolbar class="mat-elevation-z8" >
+            <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+                <mat-icon *ngIf="!sidenav.opened">
+                    menu
+                </mat-icon>
+                <mat-icon *ngIf="sidenav.opened">
+                    close
+                </mat-icon>
+            </button>
+            Resto Icon
+           
+            <mat-icon style = "position: fixed;right: 2.6cm;"  matBadge=""  (click)="goToLogin()">login</mat-icon>
+               
+              
+            <mat-icon style = "position: fixed;right: 1.5cm;" matBadge="{{numOrder}}" (click)="openCard()">add_shopping_cart</mat-icon>
+           
+         <!--   <mat-icon style = "position: fixed;right: 0.4cm;" matBadge="">notifications</mat-icon>-->
+           
+        </mat-toolbar>
+        
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        
+               
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button" (click)="goToHomeUser()">
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+                
+                <button *ngFor="let categorie of categories" [routerLink]="['/productsByCategorie', categorie.id]" mat-button class="menu-button">
+                    <mat-icon>foods</mat-icon>
+                    <span>{{categorie.name}}</span>
+                </button>
+                
+                <mat-divider></mat-divider>
+               
+
+                
+        
+              
+         
+        
+                <mat-divider></mat-divider>
+        
+                <button mat-button class="menu-button">
+                    <mat-icon>help</mat-icon>
+                    <span>Help</span>
+                </button>
+        
+            </mat-sidenav>
+            <mat-sidenav-content >
+              
+                <router-outlet></router-outlet>
+             
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+        </div>
+</ng-template>
+
+
+<!--<ng-template #login>
+<app-login></app-login>
+</ng-template>-->
+
+<!-----modal for card menu -->

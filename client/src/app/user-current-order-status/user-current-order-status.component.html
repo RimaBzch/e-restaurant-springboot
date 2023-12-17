@@ -1,0 +1,35 @@
+<h1 style="text-align: center;">{{warning}}</h1>
+<div *ngFor="let order of arrOrder">
+    <h1 style="text-align: center;">{{order.order}}</h1>
+<div class="stepper-horizontal" id="stepper{{order.id}}">
+    <div class="step editing">
+        <div class="step-circle"><span>1</span></div>
+        <div class="step-title">Order payed</div>
+        <div class="step-bar-left"></div>
+        <div class="step-bar-right"></div>
+    </div>
+    <div class="step">
+        <div class="step-circle"><span>2</span></div>
+        <div class="step-title">Order prepared</div>
+        <div class="step-bar-left"></div>
+        <div class="step-bar-right"></div>
+    </div>
+    <div class="step">
+        <div class="step-circle"><span>3</span></div>
+        <div class="step-title">Order on the way</div>
+        <!--<div class="step-optional">Optional</div>-->
+        <div class="step-bar-left"></div>
+        <div class="step-bar-right"></div>
+    </div>
+    <div class="step">
+        <div class="step-circle"><span>4</span></div>
+        <div class="step-title">Order delivered</div>
+        <!--<div class="step-optional">Optional</div>-->
+        <div class="step-bar-left"></div>
+        <div class="step-bar-right"></div>
+    </div>
+</div>
+
+<br>
+</div>
+<!--<button class="button" (click)="nextStep()">Next</button>-->

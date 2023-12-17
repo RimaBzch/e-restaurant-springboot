@@ -1,0 +1,48 @@
+<div id="modal-content-wrapper">
+    <header id="modal-header">
+        <h1 id="modal-title">Please enter your address </h1>
+    </header>
+    <section id="modal-body" >
+        <form [formGroup]="form" (ngSubmit)="ff.form.valid ; ff.resetForm()" #ff="ngForm" >
+            <div class="form-outline form-white mb-4">
+              <input type="text"
+              formControlName="adress" 
+              id="typeadress" 
+              class="form-control form-control-lg"
+              [ngClass]="{ 'is-invalid': submitted && f['adress'].errors }"
+               />
+          
+              <div *ngIf="submitted && f['adress'].errors" class="invalid-feedback">
+                <div *ngIf="f['adress'].errors['adress']">adress is required</div>
+                <div *ngIf="f['adress'].errors['adress']">adress is invalid</div>
+              </div>   
+              <label class="form-label" for="typeadress">Address</label>               
+            </div>
+
+            <div class="form-outline form-white mb-4">
+              <input type="number"
+              formControlName="tel" 
+              id="typetel" 
+              class="form-control form-control-lg"
+              [ngClass]="{ 'is-invalid': submitted && f['tel'].errors }"
+               />
+          
+              <div *ngIf="submitted && f['tel'].errors" class="invalid-feedback">
+                <div *ngIf="f['tel'].errors['tel']">Tel is required</div>
+                <div *ngIf="f['tel'].errors['tel']">Tel is invalid</div>
+              </div>   
+              <label class="form-label" for="typetel">Tel</label>               
+            </div>
+            <br>
+            <button class="btn btn-outline-light btn-lg px-5" type="button" (click)="onSubmit()">Submit</button>
+        
+          </form>
+          <ng-snotify class="material"></ng-snotify>
+  
+             
+    </section>
+    <ng-snotify class="material"></ng-snotify>
+    <footer id="modal-footer">
+          <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">Go back</button>
+    </footer>
+</div>

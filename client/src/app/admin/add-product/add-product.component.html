@@ -1,0 +1,82 @@
+
+<!----------------------------------------------->
+
+<!--<body>-->
+  <div class="main" > 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-xl-9 mx-auto">
+          <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+            <!--<div class="card-img-left d-none d-md-flex">-->
+              <!-- Background image for card set in CSS! -->
+            <!--</div>-->
+            <div class="card-body p-4 p-sm-5">
+              <h5 class="card-title text-center mb-5 fw-light fs-5" style="color: black;">Register new food</h5>
+              <form name="form" (ngSubmit)="f.form.valid ; f.resetForm()" #f="ngForm">
+  
+                <div class="form-floating mb-4">
+                  <input [(ngModel)]="name" [formControl]="nameFormControl" type="text" class="form-control" id="floatingInputname" placeholder="name" required autofocus>
+                  <mat-error class="form-control" *ngIf="nameFormControl.hasError('minlength')">
+                    Should be at least 4 charactere
+                    </mat-error>
+                    <mat-error class="form-control" style="color: red;" *ngIf="nameFormControl.hasError('required')">
+                      product name is  <strong> Required</strong>
+                    </mat-error>
+                  <label for="floatingInputname" style="color: black;">Food name</label>
+                </div>
+  
+                <div class="form-floating mb-3">
+                  <select id="floatingInputComposition" class="form-control" [formControl]="categorieFormControl">
+                    <option [ngValue]="null" disabled>Select Categorie</option>
+       
+                    <option *ngFor="let categorie of categories" [ngValue]="categorie.id">{{categorie.name}}</option>
+                    select categorie
+                  </select>
+                  <br>
+                  <label for="floatingInputComposition"  style="color: black;">Categorie</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <textarea [(ngModel)]="composition" [formControl]="compositionFormControl" rows="8" type="email" class="form-control" id="floatingInputComposition" placeholder="rise, meats, ..."></textarea>
+                  <label for="floatingInputComposition"  style="color: black;">Composition</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input [(ngModel)]="price" [formControl]="priceFormControl" type="number" class="form-control" id="floatingInputPrice" placeholder="00.00">
+                    <label for="floatingInputPrice"  style="color: black;">price en €</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="file" (change)="onFileChanged($event)" accept=".png,.jpg">                    
+                </div>
+  
+                <div class="d-grid mb-2">
+                  <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" (click)="save()">Register</button>
+                </div>
+  
+               <!--  
+                <a class="d-block text-center mt-2 small" href="#">Have an account? Sign In</a>
+  
+                <hr class="my-4">
+  
+                <div class="d-grid mb-2">
+                  <button class="btn btn-lg btn-google btn-login fw-bold text-uppercase" type="submit">
+                    <i class="fab fa-google me-2"></i> Sign up with Google
+                  </button>
+                </div>
+  
+                <div class="d-grid">
+                  <button class="btn btn-lg btn-facebook btn-login fw-bold text-uppercase" type="submit">
+                    <i class="fab fa-facebook-f me-2"></i> Sign up with Facebook
+                  </button>
+                </div>
+                -->
+  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--</body>-->

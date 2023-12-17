@@ -1,0 +1,26 @@
+<div id="modal-content-wrapper">
+    <header id="modal-header">
+        <h1 id="modal-title">Your list of order :  </h1>
+    </header>
+    <section id="modal-body" *ngFor="let com of commond">
+        <mat-card id="{{com.id}}">
+            <button id = "x" (click)="removeItem(com.id,com.prix*com.quantity)"> X </button>
+            <mat-card-title>{{com.name}}</mat-card-title>
+            <mat-card-content> 
+                prix :{{com.prix}} €
+                <br>
+                Quantity : {{com.quantity}} 
+            </mat-card-content>
+           
+        </mat-card>
+        <br>
+    </section>
+    <ng-snotify class="material"></ng-snotify>
+    
+    <footer id="modal-footer">
+        <h5>Transport fees : 2.5 €</h5>
+        <h3>Total to pay : {{total}} €</h3>
+        <button *ngIf="total!=0" mat-raised-button id="modal-action-button" (click)="actionFunction()">Place the order</button>
+        <button  mat-raised-button id="modal-cancel-button" (click)="closeModal()">Go back</button>
+    </footer>
+</div>

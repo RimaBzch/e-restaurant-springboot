@@ -1,0 +1,71 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-xl-9 mx-auto">
+        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+          <!--<div class="card-img-left d-none d-md-flex">-->
+            <!-- Background image for card set in CSS! -->
+          <!--</div>-->
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Register new Categorie</h5>
+            <form name="form" (ngSubmit)="f.form.valid ; f.resetForm()" #f="ngForm">
+
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                  <!--- Note that these columns can be defined in any order.
+                        The actual rendered columns are set as a property on the row definition" -->
+                
+                 
+                
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> 
+                      <input   type="text" class="form-control" id="floatingInputname" placeholder="name"  value="{{element.name}}" (change)="getNewValue($event)">
+                       
+                  </td>
+                  </ng-container>
+                
+                  
+                
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="id" >
+                    <th mat-header-cell *matHeaderCellDef> action </th>
+                    <td mat-cell *matCellDef="let element">
+                      <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" (click)="deleteCateg(element.id)" >Update</button>
+                      
+                  </ng-container>
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                
+              
+            
+              
+
+             <!--  
+              <a class="d-block text-center mt-2 small" href="#">Have an account? Sign In</a>
+
+              <hr class="my-4">
+
+              <div class="d-grid mb-2">
+                <button class="btn btn-lg btn-google btn-login fw-bold text-uppercase" type="submit">
+                  <i class="fab fa-google me-2"></i> Sign up with Google
+                </button>
+              </div>
+
+              <div class="d-grid">
+                <button class="btn btn-lg btn-facebook btn-login fw-bold text-uppercase" type="submit">
+                  <i class="fab fa-facebook-f me-2"></i> Sign up with Facebook
+                </button>
+              </div>
+              -->
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

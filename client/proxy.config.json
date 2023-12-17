@@ -1,0 +1,22 @@
+{
+    "/api/v1/*": {
+      "target": "http://localhost:8082",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "/product/*": {
+      "target": "http://localhost:8082",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+    ,
+    "/websocket/*": {
+      "target": "http://localhost:8082",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+    
+  }
